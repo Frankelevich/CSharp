@@ -8,11 +8,12 @@ namespace Pruebas
 {
     internal class Llave
     {
+        Random random = new Random();
         private int forma;
 
 
-        public Llave(int f) { 
-            forma= f;
+        public Llave(int forma) { 
+            this.forma= random.Next(1,forma);
         }
 
         public int getforma() { 

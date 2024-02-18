@@ -53,9 +53,9 @@ namespace Pruebas
             }
         }
 
-        public void ponerTesoro()
+        public void setContenido()
         {
-            this.contenido = "Moneda de Oro";
+            this.contenido = "Diamante";
         }
     }
 }

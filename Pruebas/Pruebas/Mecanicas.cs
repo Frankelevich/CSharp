@@ -7,51 +7,49 @@ using System.Threading.Tasks;
 namespace Pruebas
 {
     internal class Mecanicas
-    {
-        //MENU====================================================================================================
-        public static int menúSelección(int valorMinimo, int valorMaximo, String menu)
+    { 
+        //Establezco intentos:
+        public static void setIntentos(int n,int _a, int _b)
         {
-            String input;
-            int x = 0;
-            bool a = false;
-            while (a == false)
+            _a = n;
+
+            switch (n)
             {
-
-                Console.Clear();
-                Console.WriteLine(menu);
-                Console.WriteLine("\nIngrese una opción: \n");
-                input = Console.ReadLine();
-                if (string.IsNullOrEmpty(input))
-                {
-                    // Asignando un valor predeterminado si la entrada está vacía
-                    input = "Error";
-                }
-
-                if (int.TryParse(input, out int n))
-                {
-                    x = int.Parse(input);
-                    if (valorMinimo-1 >= x || x >= valorMaximo+1)
-                    {
-                        Console.WriteLine("Ingrese una opción válida");
-                        Thread.Sleep(1500);
-                    }
-                    else a = true;
-                }
-                else
-                {
-                    Console.WriteLine("\nEntrada no válida. Asegúrese de ingresar un número entero.");
-                    Thread.Sleep(1500);
-                }
-
-
+                case 3:
+                    _a = n+1;
+                    break;
+                case 4:
+                case 5:
+                case 6:
+                    _b = 1;
+                    break;
+                case 7:
+                case 8:
+                case 9:
+                case 10:
+                case 11:
+                    _a =7;
+                    _b =2;
+                    break;
+                case 12:
+                case 13:
+                case 14:
+                case 15:
+                case 16:
+                case 17:
+                case 18:
+                case 19:
+                    _b=n-9;
+                    break;
+                default: 
+                    _a = 12;
+                    _b = 10;
+                    break;
             }
-            return x;
-        }
 
-        //JUEGO====================================================================================================
-
+        }    
         //Creamos la lista de los cofres y llaves con sus "codigos" de forma aleatoria:
-        public static void setElementos(List<Cofre> cofres, List<Llave> llaves, int n)
+        public static void setElementos(ref List<Cofre> cofres, ref List<Llave> llaves, int n)
         {
             Random random = new Random();
             HashSet<int> num= new HashSet<int>();
@@ -84,7 +82,14 @@ namespace Pruebas
                 llaves.Add(new Llave(x));
             }
 
+            cofres[random.Next(0, cofres.Count)].setContenido(); //Ponemos un diamante en un cofre 
+
         }
+
+
+
+
+
 
 }
 }

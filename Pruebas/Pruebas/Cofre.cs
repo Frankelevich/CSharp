@@ -33,6 +33,11 @@ namespace Pruebas
             this.candado= c;
         }
 
+        public int getCandado()
+        {
+            return this.candado;
+        }
+
         public void setDureza()
         {
             

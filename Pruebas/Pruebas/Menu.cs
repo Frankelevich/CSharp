@@ -51,6 +51,7 @@ namespace Pruebas
         {
             op = Menu.seleccion(0, n, Texto.menu3); //(Reciclando código de arriba)
             return op;
+
         }
 
         public static int confirmar(int x)

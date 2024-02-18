@@ -52,37 +52,63 @@ namespace Pruebas
         public static void setElementos(ref List<Cofre> cofres, ref List<Llave> llaves, int n)
         {
             Random random = new Random();
-            HashSet<int> num= new HashSet<int>();
 
             for (int i = 0; i < n; i++)
             {
                 int x;
                 do
                 {
-                    x = random.Next(0, n);
+                    x = random.Next(n);
+                    
+                } while (repetido1(cofres, x));//Hacemos uso del método que hay más abajo
 
-                } while (num.Contains(x));
-
-                
-                cofres.Add(new Cofre(x));
+                Cofre nuevoCofre = new Cofre(x);
+                cofres.Add(nuevoCofre);
             }
-
-            num.Clear();
 
             for (int i = 0; i < n; i++)
             {
                 int x;
                 do
                 {
-                    x = random.Next(0, n);
+                    x = random.Next(n);
 
-                } while (num.Contains(x));
+                } while (repetido2(llaves, x));//Acá el mismo método modificado para llaves
 
-
-                llaves.Add(new Llave(x));
+                Llave nuevaLlave = new Llave(x);
+                llaves.Add(nuevaLlave);
             }
+
+
+
 
             cofres[random.Next(0, cofres.Count)].setContenido(); //Ponemos un diamante en un cofre 
+
+            
+            
+            static bool repetido1(List<Cofre> cofres, int x)//metodo para saber si se repite un cofre
+            {
+                foreach (Cofre cofre in cofres)
+                {
+                    if (cofre.getCandado() == x)
+                    {
+                        return true;
+                    }
+                }
+                return false;
+            }
+                         
+            static bool repetido2(List<Llave> llaves, int x)//metodo para saber si se repite una llave
+            {
+                foreach (Llave llave in llaves) 
+                {
+                    if (llave.getforma() == x)
+                    {
+                        return true;
+                    }
+                }
+                return false;
+            }
 
         }
 

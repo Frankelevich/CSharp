@@ -12,8 +12,8 @@ namespace Pruebas
         private int forma;
 
 
-        public Llave(int forma) { 
-            this.forma= random.Next(1,forma);
+        public Llave(int forma) {
+            this.forma = forma;
         }
 
         public int getforma() { 

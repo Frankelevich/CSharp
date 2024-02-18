@@ -12,15 +12,12 @@ using Pruebas;
 
 int n = 0;
 bool exit = false;
-
-//Pongo todo el texto a utilizar dentro de una clase
-Texto t = new Texto();
-
 int intentos = 0, rompe = 0;
 int diamante = 0;
 int gana = 0;
 
-
+//Pongo todo el texto a utilizar dentro de una clase
+Texto t = new Texto(diamante);
 
 
 
@@ -28,31 +25,32 @@ while (exit == false)
 {
 
 
-    n = Menu.seleccion(1, 3, t.menu1);
+    n = Menu.seleccion(1, 3, t.titulo+t.menu1);
 
     switch (n)
     {
         case 1://Preparando el juego
             int opcion = 0;
-            n = Menu.seleccion(3, 25, t.menu2);
-            List<Cofre> cofres = new List<Cofre>(25);
-            List<Llave> llaves = new List<Llave>(25);
+            n = Menu.seleccion(3, 25, t.titulo+t.menu2);
+            List<Cofre> listaCofres = new List<Cofre>(25);
+            List<Llave> listaLlaves = new List<Llave>(25);
 
-            Mecanicas.setElementos(ref cofres, ref llaves, n);
+            Mecanicas.setElementos(ref listaCofres, ref listaLlaves, n);
 
             Mecanicas.setIntentos(n, intentos, rompe);
-            
+
             //JUEGO---------------------------------------------------------------------------------------------------------------------------------------------JUEGO
-            //
-            //
+            //-------------------------------------------------------------------------------------------------------------------------------------------------------
+            //-------------------------------------------------------------------------------------------------------------------------------------------------------
             while (intentos>0)
             { 
             opcion = Menu.juego(n, ref opcion);
 
                 if (opcion != 0)
                 {
-                    //Acá falta escribir (método Mecanicas.seleccionCofre() y String Texto.menu3())
+                    
                 }
+               
                 else break;
             }
 
@@ -63,10 +61,12 @@ while (exit == false)
                 //Esta historia continuará...
             }
 
-            cofres.Clear();
-            llaves.Clear();
+            listaCofres.Clear();
+            listaLlaves.Clear();
             break;
         //---------------------------------------------------------------------------------------------------------------------------------------------------FIN JUEGO
+        //------------------------------------------------------------------------------------------------------------------------------------------------------------
+        //------------------------------------------------------------------------------------------------------------------------------------------------------------
         case 2:
             Console.Clear();
             Console.WriteLine(t.titulo);

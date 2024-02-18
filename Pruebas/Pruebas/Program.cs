@@ -10,37 +10,58 @@
 
 using Pruebas;
 
-String input = "";
 int n = 0;
 bool exit = false;
-int intentos=0, rompe=0;
-int monedas = 0;
+
+//Pongo todo el texto a utilizar dentro de una clase
 Texto t = new Texto();
+
+int intentos = 0, rompe = 0;
+int diamante = 0;
+int gana = 0;
+
+
+
+
 
 while (exit == false)
 {
 
 
-    n = Menu.menuSeleccion(1, 3, t.menu1);
+    n = Menu.seleccion(1, 3, t.menu1);
 
     switch (n)
     {
-        case 1:
+        case 1://Preparando el juego
+            int opcion = 0;
+            n = Menu.seleccion(3, 25, t.menu2);
+            List<Cofre> cofres = new List<Cofre>(25);
+            List<Llave> llaves = new List<Llave>(25);
 
+            Mecanicas.setElementos(ref cofres, ref llaves, n);
 
+            Mecanicas.setIntentos(n, intentos, rompe);
+            
             //JUEGO---------------------------------------------------------------------------------------------------------------------------------------------JUEGO
             //
             //
-            n = Menu.menuSeleccion(3, 25, t.menu2);
+            while (intentos>0)
+            { 
+            opcion = Menu.juego(n, ref opcion);
 
-            List<Cofre> cofres= new List<Cofre>(25);
-            List<Llave> llaves= new List<Llave>(25);
+                if (opcion != 0)
+                {
+                    //Acá falta escribir (método Mecanicas.seleccionCofre() y String Texto.menu3())
+                }
+                else break;
+            }
 
-            Mecanicas.setElementos(ref cofres,ref llaves, n);
-
-            Mecanicas.setIntentos(n,intentos,rompe);
-
-
+            //El desenlace por acá...
+            
+            if (intentos == 0 && gana != 0) 
+            {
+                //Esta historia continuará...
+            }
 
             cofres.Clear();
             llaves.Clear();
@@ -48,11 +69,11 @@ while (exit == false)
         //---------------------------------------------------------------------------------------------------------------------------------------------------FIN JUEGO
         case 2:
             Console.Clear();
-            Console.WriteLine(Texto.titulo);
+            Console.WriteLine(t.titulo);
             Texto.instrucciones();
             break;
         case 3:
-            int u = Texto.confirmar(ref n);
+            int u = Menu.confirmar(n);
             if (u == 1)
             {
                 exit = true;

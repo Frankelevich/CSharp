@@ -87,6 +87,10 @@ namespace Pruebas
         }
 
 
+        public static void seleccionCofre(ref List<Cofre> cofres, ref List<Llave> llaves, int n)
+        {
+            //Mecanicas del juego en ejecucuión
+        }
 
 
 

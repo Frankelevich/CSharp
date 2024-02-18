@@ -8,7 +8,7 @@ namespace Pruebas
 {
     internal class Menu
     {
-        public static int menuSeleccion(int valorMinimo, int valorMaximo, String menu)
+        public static int seleccion(int valorMinimo, int valorMaximo, String menu) //el String 'menu' nos dará la información de las opciones a selecionar
         {
             String input;
             int x = 0;
@@ -47,12 +47,17 @@ namespace Pruebas
             return x;
         }
 
-        public static int menuJuego(int n, int intentos, int rompe, int monedas)
+        public static int juego(int n,ref int op) 
         {
-            int opcion = Menu.menuSeleccion(0, n, Texto.menu3);
-            //He de continuar por aqui
-            int mon=0;
-            return mon;
+            op = Menu.seleccion(0, n, Texto.menu3); //(Reciclando código de arriba)
+            return op;
+        }
+
+        public static int confirmar(int x)
+        {
+            String menu = "Seguro que desea salir? \n\n1) Si\n2) No";
+            x = Menu.seleccion(0, 3, menu);
+            return x;
         }
 
     }

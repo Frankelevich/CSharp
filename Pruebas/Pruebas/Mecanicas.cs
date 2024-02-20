@@ -113,9 +113,14 @@ namespace Pruebas
         }
 
 
-        public static void seleccionCofre(ref List<Cofre> cofres, ref List<Llave> llaves, int n)
+        public static bool seleccionCofre(List<Cofre> cofres, List<Llave> llaves, int opcion1, int opcion2)
         {
+            if (cofres[opcion2].getCandado() == opcion1)
+            {
+                return true;
+            }
             //Mecanicas del juego en ejecucuión
+            return false;
         }
 
 

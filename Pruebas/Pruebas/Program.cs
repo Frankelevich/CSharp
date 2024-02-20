@@ -43,14 +43,18 @@ while (exit == false)
             //-------------------------------------------------------------------------------------------------------------------------------------------------------
             //-------------------------------------------------------------------------------------------------------------------------------------------------------
             while (intentos>0)
-            { 
-            opcion = Menu.juego(n, ref opcion);
+            {
+                int opcion1 = Menu.seleccion(0, n, "Elija una llave:");
+                int opcion2 = Menu.seleccion(0, n, "Elija un cofre:");
 
-                if (opcion != 0)
+                if (opcion1 != 0 && opcion2 != 0)
                 {
-                    
+                    if (Mecanicas.seleccionCofre(listaCofres, listaLlaves, opcion1, opcion2))
+                    {
+                        //si coinciden la llave y la cerradura se deberá abrir el cofre y mostrar su contenido
+                        Texto.mostrarContenido();
+                    }
                 }
-               
                 else break;
             }
 

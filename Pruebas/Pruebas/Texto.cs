@@ -40,7 +40,10 @@ namespace Pruebas
 
         //Menú del Juego-----------------------------------------------------------------------------------------------------------------
 
-        public static String menu3 = "Elija una llave:"; //Hay que agregar texto por acá
+        public static void mostrarContenido(Cofre cofre) 
+        {
+            Console.WriteLine(cofre.getContenido());
+        }
         
         
         public static void salir()

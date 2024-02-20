@@ -47,13 +47,6 @@ namespace Pruebas
             return x;
         }
 
-        public static int juego(int n,ref int op) 
-        {
-            op = Menu.seleccion(0, n, Texto.menu3); //(Reciclando código de arriba)
-            return op;
-
-        }
-
         public static int confirmar(int x)
         {
             String menu = "Seguro que desea salir? \n\n1) Si\n2) No";

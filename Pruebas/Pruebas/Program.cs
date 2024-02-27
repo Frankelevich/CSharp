@@ -12,9 +12,8 @@ using Pruebas;
 
 int n = 0;
 bool exit = false;
-int intentos = 0, rompe = 0;
 int diamante = 0;
-int gana = 0;
+bool gana = false;
 
 //Pongo todo el texto a utilizar dentro de una clase
 Texto t = new Texto(diamante);
@@ -29,44 +28,57 @@ while (exit == false)
 
     switch (n)
     {
-        case 1://Preparando el juego
+        case 1://Preparando el juego--------------------------------------------------------------------------
+            int intentos = 0, rompe = 0;
             int opcion = 0;
             n = Menu.seleccion(3, 25, t.titulo+t.menu2);
+                        
             List<Cofre> listaCofres = new List<Cofre>(25);
             List<Llave> listaLlaves = new List<Llave>(25);
 
             Mecanicas.setElementos(ref listaCofres, ref listaLlaves, n);
 
-            Mecanicas.setIntentos(n, intentos, rompe);
+            Mecanicas.setIntentos(n,ref intentos,ref rompe);
 
             //JUEGO---------------------------------------------------------------------------------------------------------------------------------------------JUEGO
             //-------------------------------------------------------------------------------------------------------------------------------------------------------
             //-------------------------------------------------------------------------------------------------------------------------------------------------------
             while (intentos>0)
             {
-                int opcion1 = Menu.seleccion(0, n, "Elija una llave:");
-                int opcion2 = Menu.seleccion(0, n, "Elija un cofre:");
+                int opcion1 = Menu.seleccion(0, n, t.titulo+$"-Intentos: {intentos}\n\n"+"Elija una llave:")-1;
+                int opcion2 = Menu.seleccion(0, n, t.titulo+ $"-Intentos: {intentos}\n\n" + "Elija un cofre:")-1;
 
-                if (opcion1 != 0 && opcion2 != 0)
+                if (opcion1 != -1 || opcion2 != -1)
                 {
-                    if (Mecanicas.seleccionCofre(listaCofres, listaLlaves, opcion1, opcion2))
+
+                    //si coinciden la llave y la cerradura se deberá abrir el cofre y mostrar su contenido
+                    Console.WriteLine(Texto.mostrarContenido(listaCofres[opcion2], listaLlaves[opcion1]));
+                    Console.ReadLine();
+                    if (Texto.mostrarContenido(listaCofres[opcion2], listaLlaves[opcion1]).Contains("Diamante"))
                     {
-                        //si coinciden la llave y la cerradura se deberá abrir el cofre y mostrar su contenido
-                        Texto.mostrarContenido();
+                        diamante += 1;
+                        gana = true;
+                        break;
                     }
+                    else intentos -= 1;
+
                 }
                 else break;
+             
             }
 
             //El desenlace por acá...
-            
-            if (intentos == 0 && gana != 0) 
+
+            if (intentos == 0 && gana != false)
             {
-                //Esta historia continuará...
+                Console.WriteLine("\n\n\n\n\n\t\t\tHAS GANADO!!!");
+                Console.ReadLine();
             }
+            else Console.WriteLine("Mejor suerte la próxima :(");
 
             listaCofres.Clear();
             listaLlaves.Clear();
+            gana = false;
             break;
         //---------------------------------------------------------------------------------------------------------------------------------------------------FIN JUEGO
         //------------------------------------------------------------------------------------------------------------------------------------------------------------

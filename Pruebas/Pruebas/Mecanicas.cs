@@ -9,27 +9,27 @@ namespace Pruebas
     internal class Mecanicas
     { 
         //Establezco intentos:
-        public static void setIntentos(int n,int _a, int _b)
+        public static void setIntentos(int n,ref int intentos,ref int rompe)
         {
-            _a = n;
+            intentos = n;
 
             switch (n)
             {
                 case 3:
-                    _a = n+1;
+                    intentos = n+1;
                     break;
                 case 4:
                 case 5:
                 case 6:
-                    _b = 1;
+                    rompe = 1;
                     break;
                 case 7:
                 case 8:
                 case 9:
                 case 10:
                 case 11:
-                    _a =7;
-                    _b =2;
+                    intentos =7;
+                    rompe =2;
                     break;
                 case 12:
                 case 13:
@@ -39,11 +39,11 @@ namespace Pruebas
                 case 17:
                 case 18:
                 case 19:
-                    _b=n-9;
+                    rompe=n-9;
                     break;
                 default: 
-                    _a = 12;
-                    _b = 10;
+                    intentos = 12;
+                    rompe = 10;
                     break;
             }
 
@@ -113,7 +113,7 @@ namespace Pruebas
         }
 
 
-        public static bool seleccionCofre(List<Cofre> cofres, List<Llave> llaves, int opcion1, int opcion2)
+        /*public static bool seleccionCofre(List<Cofre> cofres, List<Llave> llaves, int opcion1, int opcion2)
         {
             if (cofres[opcion2].getCandado() == opcion1)
             {
@@ -121,7 +121,7 @@ namespace Pruebas
             }
             //Mecanicas del juego en ejecucuión
             return false;
-        }
+        }*/
 
 
 

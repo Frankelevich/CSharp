@@ -11,7 +11,7 @@ namespace Pruebas
         Random random= new Random();
         private int candado;
         private bool cerrado;
-        private String[] basura= {"Taza rota","Pan con Hongos","Carton Mojado"};
+        private String[] basura= {"Taza rota","Pan rancio","Esqueleto de rata","Cabeza de pescado"};
         private String contenido; 
 
         private bool dureza; //Con esto sabremos si se puede romper el cofre
@@ -23,10 +23,7 @@ namespace Pruebas
             
         }
 
-        public String getContenido()
-        {
-            return contenido;
-        }
+        
 
         public void setCandado(int c)
         {
@@ -43,18 +40,23 @@ namespace Pruebas
             
         }
 
-        public void abrir(Llave l)
+        public String getContenido(Llave l)
         {
-            if (l.getforma() == candado && cerrado==true)
+            if (cerrado == true && l.getforma() == candado)
+
             {
-                cerrado=false;
-                Console.WriteLine("Este candado ya ha sido abierto");
+                cerrado = false;
+                Console.WriteLine("Abriendo candado");
+                return $"El candado contiene: {contenido}";
             }
             else {
-                if (cerrado==false)
+                if (cerrado == false)
                 {
                     Console.WriteLine("El candado ya está abierto");
-                }else Console.WriteLine("La llave no es la correcta");
+                    return $"El candado contiene: {contenido}";
+                }
+                else return "La llave no coincide con la cerradura del candado";
+
             }
         }
 

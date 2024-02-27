@@ -16,7 +16,7 @@ int diamante = 0;
 bool gana = false;
 
 //Pongo todo el texto a utilizar dentro de una clase
-Texto t = new Texto(diamante);
+Texto t = new Texto();
 
 
 
@@ -43,12 +43,12 @@ while (exit == false)
             //JUEGO---------------------------------------------------------------------------------------------------------------------------------------------JUEGO
             //-------------------------------------------------------------------------------------------------------------------------------------------------------
             //-------------------------------------------------------------------------------------------------------------------------------------------------------
-            while (intentos>0)
+            while (intentos>0 && gana==false)
             {
                 int opcion1 = Menu.seleccion(0, n, t.titulo+$"-Intentos: {intentos}\n\n"+"Elija una llave:")-1;
                 int opcion2 = Menu.seleccion(0, n, t.titulo+ $"-Intentos: {intentos}\n\n" + "Elija un cofre:")-1;
 
-                if (opcion1 != -1 || opcion2 != -1)
+                if (opcion1 > -1 && opcion2 > -1)
                 {
 
                     //si coinciden la llave y la cerradura se deberá abrir el cofre y mostrar su contenido
@@ -58,7 +58,6 @@ while (exit == false)
                     {
                         diamante += 1;
                         gana = true;
-                        break;
                     }
                     else intentos -= 1;
 
@@ -69,12 +68,15 @@ while (exit == false)
 
             //El desenlace por acá...
 
-            if (intentos == 0 && gana != false)
+            if (intentos != 0 && gana != false)
             {
-                Console.WriteLine("\n\n\n\n\n\t\t\tHAS GANADO!!!");
+                Console.WriteLine("\n\n\n\t\tHAS GANADO!!!");
+                t.titulo = $"\t\t***Coffin Opener*** \t\t\t\t\tCantidad de Diamantes:{diamante}\n\n";
+
                 Console.ReadLine();
             }
             else Console.WriteLine("Mejor suerte la próxima :(");
+            Console.ReadLine();
 
             listaCofres.Clear();
             listaLlaves.Clear();

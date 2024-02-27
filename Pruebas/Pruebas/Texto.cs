@@ -9,15 +9,16 @@ namespace Pruebas
 {
     internal class Texto
     {
-        static int diamante;
-        public Texto(int d) 
+        public String titulo;
+        public Texto() 
         { 
-            diamante = d;
-        }
-        //Menu Inicial-------------------------------------------------------------------------------------------------------------------
-        public String titulo = $"\t\t***Coffin Opener*** \t\t\t\t\tCantidad de Diamantes:{diamante}\n\n";
+            titulo = $"\t\t***Coffin Opener*** \t\t\t\t\tCantidad de Diamantes:0\n\n";
+    }
 
-        public String menu1 = "1) Jugar \n" +
+
+    //Menu Inicial-------------------------------------------------------------------------------------------------------------------
+
+    public String menu1 = "1) Jugar \n" +
                               "2) Cómo jugar \n" +
                               "3) Salir";
 
